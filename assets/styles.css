@@ -218,8 +218,20 @@ footer .legal { border-top: 1px solid rgba(255,255,255,.12); margin-top: 2.4rem;
 .page-hero h1 { color: #fff; font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
 .page-hero p { color: var(--silver); max-width: 60ch; margin-top: .5rem; }
 
+/* Mobile fixed booking bar (hidden on desktop) */
+.mobile-cta { display: none; }
+
 @media (max-width: 860px) {
   .nav { flex-direction: column; gap: .6rem; }
   nav ul { flex-wrap: wrap; justify-content: center; }
+  nav .btn { display: none; } /* header CTA replaced by fixed bottom bar */
   .hero img.bg { height: 100%; }
+  .mobile-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 150;
+    display: flex; gap: .6rem; padding: .7rem .9rem calc(.7rem + env(safe-area-inset-bottom));
+    background: #fff; border-top: 1px solid var(--line);
+    box-shadow: 0 -6px 20px rgba(11,37,69,.18);
+  }
+  .mobile-cta .btn { flex: 1; display: inline-flex; }
+  body { padding-bottom: 76px; } /* keep footer clear of the bar */
 }
